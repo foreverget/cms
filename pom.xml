@@ -687,7 +687,7 @@
 						</goals>
 						<configuration>
 							<classesDirectory>${project.outputDirectory}</classesDirectory>
-							<finalName>jeesite</finalName>
+							<finalName>cms</finalName>
 							<outputDirectory>${project.build.directory}/${project.artifactId}/WEB-INF/lib</outputDirectory>
 							<includes>
 					        	<include>com/csgi/cms/**</include>
@@ -713,7 +713,7 @@
 				<configuration>
 			        <obfuscate>true</obfuscate>
 			    	<options>
-                        <option>-injars ${project.build.directory}/${project.artifactId}/WEB-INF/lib/jeesite.jar</option>
+                        <option>-injars ${project.build.directory}/${project.artifactId}/WEB-INF/lib/cms.jar</option>
                     </options>
                     <outjar>${project.artifactId}/WEB-INF/lib/cms_out.jar</outjar>
                     <outputDirectory>${project.build.directory}</outputDirectory>
@@ -916,7 +916,7 @@
 								<!-- oracle
 								<property name="dbunit.datatype" value="org.dbunit.ext.oracle.Oracle10DataTypeFactory" /> -->
 								
-								<property file="src/main/resources/jeesite.properties" />
+								<property file="src/main/resources/sys.properties" />
 								<sql driver="${jdbc.driver}" url="${jdbc.url}" userid="${jdbc.username}" password="${jdbc.password}" 
 									onerror="continue" encoding="${project.build.sourceEncoding}">
 									<classpath refid="maven.test.classpath" />
