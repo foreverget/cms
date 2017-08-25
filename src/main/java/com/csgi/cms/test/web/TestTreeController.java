@@ -51,7 +51,7 @@ public class TestTreeController extends BaseController {
 	public String list(TestTree testTree, HttpServletRequest request, HttpServletResponse response, Model model) {
 		List<TestTree> list = testTreeService.findList(testTree);
 		model.addAttribute("list", list);
-		return "jeesite/test/testTreeList";
+		return "biz/test/testTreeList";
 	}
 
 	@RequiresPermissions("test:testTree:view")
@@ -76,7 +76,7 @@ public class TestTreeController extends BaseController {
 			testTree.setSort(30);
 		}
 		model.addAttribute("testTree", testTree);
-		return "jeesite/test/testTreeForm";
+		return "biz/test/testTreeForm";
 	}
 
 	@RequiresPermissions("test:testTree:edit")

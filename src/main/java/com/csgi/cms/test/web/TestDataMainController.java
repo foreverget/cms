@@ -47,14 +47,14 @@ public class TestDataMainController extends BaseController {
 			Model model) {
 		Page<TestDataMain> page = testDataMainService.findPage(new Page<TestDataMain>(request, response), testDataMain);
 		model.addAttribute("page", page);
-		return "jeesite/test/testDataMainList";
+		return "biz/test/testDataMainList";
 	}
 
 	@RequiresPermissions("test:testDataMain:view")
 	@RequestMapping(value = "form")
 	public String form(TestDataMain testDataMain, Model model) {
 		model.addAttribute("testDataMain", testDataMain);
-		return "jeesite/test/testDataMainForm";
+		return "biz/test/testDataMainForm";
 	}
 
 	@RequiresPermissions("test:testDataMain:edit")
