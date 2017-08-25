@@ -31,7 +31,7 @@ import com.csgi.cms.common.persistence.Page;
 import com.csgi.cms.common.service.BaseService;
 
 /**
- * 流程模型相关Controller
+ * 流程模型相关Service
  */
 @Service
 @Transactional(readOnly = true)

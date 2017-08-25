@@ -48,8 +48,6 @@ public abstract class ProcessDefUtils {
 	/**
 	 * 实现常见类型的expression的包装和转换
 	 * 
-	 * @author bluejoe2008@gmail.com
-	 * 
 	 */
 	public static class ExpressionUtils {
 		public static Expression stringToExpression(ProcessEngineConfigurationImpl conf, String expr) {

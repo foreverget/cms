@@ -39,7 +39,7 @@ import com.csgi.cms.common.service.BaseService;
 import com.csgi.cms.common.utils.StringUtils;
 
 /**
- * 流程定义相关Controller
+ * 流程定义相关Service
  */
 @Service
 @Transactional(readOnly = true)

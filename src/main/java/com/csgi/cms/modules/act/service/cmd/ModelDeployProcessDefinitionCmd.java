@@ -41,16 +41,17 @@ public class ModelDeployProcessDefinitionCmd implements Command<java.lang.Void> 
 		RepositoryService repositoryService = Context.getProcessEngineConfiguration()
 				.getRepositoryService();
 		try{
-			// 生成部署名称和数据 ThinkGem
+			// 生成部署名称和数据
 			JsonNode editorNode = new ObjectMapper().readTree(repositoryService
 						.getModelEditorSource(modelId));
 			BpmnModel bpmnModel = new BpmnJsonConverter().convertToBpmnModel(editorNode);
 			byte[] bpmnBytes = new BpmnXMLConverter().convertToXML(bpmnModel);
 			
-			// 查询流程定义是否已经存在了 ThinkGem
+			// 查询流程定义是否已经存在了
 			ProcessDefinition processDefinition = Context.getProcessEngineConfiguration()
 					.getRepositoryService().createProcessDefinitionQuery()
 					.processDefinitionKey(procDefKey).latestVersion().singleResult();
+			// 存在
 			if (processDefinition != null){
 				ResourceEntityManager resourceEntityManager = commandContext.getResourceEntityManager();
 				DeploymentEntity deployment = (DeploymentEntity)repositoryService.createDeploymentQuery()
@@ -80,7 +81,7 @@ public class ModelDeployProcessDefinitionCmd implements Command<java.lang.Void> 
 				deployment.addResource(diagramResource);
 				resourceEntityManager.insertResource(diagramResource);
 			}
-			// 不存在部署一个新的流程 ThinkGem
+			// 不存在部署一个新的流程
 			else{ 
 				repositoryService.createDeployment().name(procDefName).addInputStream(
 						procDefName + ".bpmn20.xml", new ByteArrayInputStream(bpmnBytes)).deploy();

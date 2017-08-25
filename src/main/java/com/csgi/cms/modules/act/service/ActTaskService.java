@@ -100,7 +100,7 @@ public class ActTaskService extends BaseService {
 	 * @return
 	 */
 	public List<Act> todoList(Act act){
-		String userId = UserUtils.getUser().getLoginName();//ObjectUtils.toString(UserUtils.getUser().getId());
+		String userId = UserUtils.getUser().getLoginName();
 		
 		List<Act> result = new ArrayList<Act>();
 		
@@ -173,7 +173,7 @@ public class ActTaskService extends BaseService {
 	 * @return
 	 */
 	public Page<Act> historicList(Page<Act> page, Act act){
-		String userId = UserUtils.getUser().getLoginName();//ObjectUtils.toString(UserUtils.getUser().getId());
+		String userId = UserUtils.getUser().getLoginName();
 
 		HistoricTaskInstanceQuery histTaskQuery = historyService.createHistoricTaskInstanceQuery().taskAssignee(userId).finished()
 				.includeProcessVariables().orderByHistoricTaskInstanceEndTime().desc();
@@ -402,7 +402,7 @@ public class ActTaskService extends BaseService {
 	 */
 	@Transactional(readOnly = false)
 	public String startProcess(String procDefKey, String businessTable, String businessId, String title, Map<String, Object> vars) {
-		String userId = UserUtils.getUser().getLoginName();//ObjectUtils.toString(UserUtils.getUser().getId())
+		String userId = UserUtils.getUser().getLoginName();
 		
 		// 用来设置启动流程的人员ID，引擎会自动把用户ID保存到activiti:initiator中
 		identityService.setAuthenticatedUserId(userId);
@@ -422,8 +422,11 @@ public class ActTaskService extends BaseService {
 		
 		// 更新业务表流程实例ID
 		Act act = new Act();
-		act.setBusinessTable(businessTable);// 业务表名
-		act.setBusinessId(businessId);	// 业务表ID
+		// 业务表名
+		act.setBusinessTable(businessTable);
+		// 业务表ID
+		act.setBusinessId(businessId);
+		// 流程实例ID
 		act.setProcInsId(procIns.getId());
 		actDao.updateProcInsIdByBusinessId(act);
 		return act.getProcInsId();
@@ -555,7 +558,7 @@ public class ActTaskService extends BaseService {
 		taskService.addComment(taskId, procInsId, comment);
 	}
 	
-	//////////////////  回退、前进、跳转、前加签、后加签、分裂 移植  https://github.com/bluejoe2008/openwebflow  ////////////////////////////////////////////////// 
+	//回退、前进、跳转、前加签、后加签、分裂 移植  https://github.com/bluejoe2008/openwebflow
 
 	/**
 	 * 任务后退一步
